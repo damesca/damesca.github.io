@@ -45,22 +45,6 @@
   </section>
   {% endif %}
 
-  {% comment %} ---------- Publications (international) ---------- {% endcomment %}
-  {% if site.data.publications and site.data.publications.size > 0 %}
-  <section id="publications">
-    <h2>International Publications</h2>
-    {% include pub-list.html pubs=site.data.publications %}
-  </section>
-  {% endif %}
-
-  {% comment %} ---------- Publications (national) ---------- {% endcomment %}
-  {% if site.data.publications_national and site.data.publications_national.size > 0 %}
-  <section id="publications-national">
-    <h2>National Publications</h2>
-    {% include pub-list.html pubs=site.data.publications_national %}
-  </section>
-  {% endif %}
-
   {% comment %} ---------- Experience ---------- {% endcomment %}
   {% if site.data.experience and site.data.experience.size > 0 %}
   <section id="experience">
@@ -95,6 +79,22 @@
       {% if ed.thesis %}<div class="entry-detail">Thesis: <em>{{ ed.thesis }}</em></div>{% endif %}
     </div>
     {% endfor %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Publications (international) ---------- {% endcomment %}
+  {% if site.data.publications and site.data.publications.size > 0 %}
+  <section id="publications">
+    <h2>International Publications</h2>
+    {% include pub-list.html pubs=site.data.publications %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Publications (national) ---------- {% endcomment %}
+  {% if site.data.publications_national and site.data.publications_national.size > 0 %}
+  <section id="publications-national">
+    <h2>National Publications</h2>
+    {% include pub-list.html pubs=site.data.publications_national %}
   </section>
   {% endif %}
 
