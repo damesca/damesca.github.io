@@ -1,0 +1,15 @@
+# ============================================================================
+#  Invited talks & selected presentations.  Most recent first.
+#  Empty this file ([]) to hide the whole section.
+#    title, venue, dates (required); location, link (optional).
+# ============================================================================
+
+- title: "Secret Sharing Dealing from Encrypted Data"
+  venue: "Workshop on secret sharing schemes"
+  location: "Tarragona, Spain"
+  dates: "2025"
+
+- title: "Cryptographic mechanisms for Anonymous payments in blockchain"
+  venue: "Crypto Seminars"
+  location: "Universitat Politècnica de Catalunya, Spain"
+  dates: "2024"

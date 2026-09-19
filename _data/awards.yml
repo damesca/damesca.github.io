@@ -1,0 +1,17 @@
+# ============================================================================
+#  Honors & awards.  Most recent first.
+#  Empty this file ([]) to hide the whole section.
+#    name, year (required); detail (optional).
+# ============================================================================
+
+- name: "Best Student Paper Award"
+  year: 2022
+  detail: "19th International Conference on Security and Cryptography (SECRYPT 2022)"
+
+- name: "Spanish national competitive grant for Ph.D. students, 4 years"
+  year: 2019
+  detail: "Ministry of Education, 2019"
+
+- name: "Best B.Sc. Thesis Award: MPC-based PKI prototype"
+  year: 2019
+  detail: "University of Málaga"

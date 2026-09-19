@@ -1,0 +1,39 @@
+# ============================================================================
+#  Your identity, bio, and links.  Edit freely.
+# ============================================================================
+
+name: "Daniel Morales"
+# `me` is used to bold your own name in the author lists on publications.
+# Write it exactly as it appears there (e.g. "Y. Name" or "Your Name").
+me: "Daniel Morales"
+
+title: "Applied Cryptography Researcher & Engineer"
+tagline: "Secure Computation · Zero-Knowledge · Applied Cryptography"
+
+# Short bio — plain text or inline HTML/markdown is fine on separate lines.
+bio: >
+
+  I am an applied cryptographer researcher and engineer (PhD) working at the
+  intersection of theory and real-world systems. My research focuses on building
+  secure and efficient protocols, with a strong focus on decentralized scenarios
+  - secure multi-party computation, zero-knowledge proofs, post-quantum primitives,
+  blockchain - and turning them into deployable software. Previously worked as a 
+  researcher and in industry; currently working as a postdoctoral researcher.
+
+# Optional: path (under assets/) to a downloadable CV PDF. Leave blank to hide.
+cv_pdf: "assets/cv.pdf"
+
+# Optional profile photo (place file under assets/). Leave blank to hide.
+photo: "assets/dani_profile.jpg"
+
+# --- Links --------------------------------------------------------
+# Leave any value blank ("") to hide that link.
+location: "Málaga, Spain"
+email: "damesca.crypto@protonmail.com"
+scholar: "https://scholar.google.com/citations?user=exdZ-7YAAAAJ"
+orcid: "https://orcid.org/0000-0002-6932-7437"
+#dblp: "https://dblp.org/pid/XXX/XXXX.html"
+github: "https://github.com/damesca"
+linkedin: "https://www.linkedin.com/in/daniel-morales-escalera/"
+#eprint: "https://eprint.iacr.org/a/your-id"   # IACR ePrint author page
+website: ""                                     # personal homepage, if separate

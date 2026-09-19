@@ -1,0 +1,25 @@
+# ============================================================================
+#  Professional service (PC memberships, reviewing, teaching).
+#  Empty this file ([]) to hide the whole section.
+#    role, detail (required); year (optional).
+# ============================================================================
+
+- role: "Program Committee"
+  detail: "23rd International Conference on Security and Cryptography (SECRYPT 2026)"
+  year: "2026"
+
+- role: "Organizing Committee"
+  detail: "3rd Workshop on Cryptographic Tools for Blockchains (affiliated with Eurocrypt 2025)"
+  year: "2026"
+
+- role: "Program Committee"
+  detail: "2nd Workshop on Cryptographic Tools for Blockchains (affiliated with Eurocrypt 2025)"
+  year: "2025"
+
+- role: "Community Reviewer"
+  detail: "Frontiers in Blockchain"
+  year: "2024 - Current"
+
+- role: "University Assistant Professor - University of Málaga"
+  detail: "Teaching topics: cybersecurity, computer networks, blockchain"
+  year: "2020 - 2025"

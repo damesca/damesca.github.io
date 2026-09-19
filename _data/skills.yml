@@ -1,0 +1,19 @@
+# ============================================================================
+#  Skills, grouped.  Each group has a `name` and a list of `items`.
+#  Empty this file ([]) to hide the whole section.
+# ============================================================================
+
+- name: "Cryptography"
+  items:
+    - "Secure Multi-Party Computation"
+    - "Zero-Knowledge Proofs & Succinct Arguments"
+    - "Post-Quantum Primitives"
+    - "Threshold Cryptography & Distributed Key Generation"
+
+- name: "Languages"
+  items:
+    - "Rust"
+    - "C / C++"
+    - "Python"
+    - "Java"
+    - "NodeJs"

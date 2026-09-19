@@ -1,0 +1,21 @@
+# ============================================================================
+#  Education.  Most recent first.
+#    degree, institution, dates (required); location, advisor, thesis (optional).
+# ============================================================================
+
+- degree: "PhD in Computer Science (Cryptography)"
+  institution: "University of Málaga"
+  location: "Málaga, Spain"
+  dates: "2020 - 2025"
+  advisor: "Isaac Agudo and Javier Lopez"
+  thesis: "Secure Multi-Party Computation: Constructions and Applications in Blockchain"
+
+- degree: "MSc in Computer and Mobile Networks"
+  institution: "University of Málaga"
+  location: "Málaga, Spain"
+  dates: "2019 - 2020"
+
+- degree: "BSc in Computer Networks and Applications"
+  institution: "University of Málaga"
+  location: "Málaga, Spain"
+  dates: "2015 - 2019"

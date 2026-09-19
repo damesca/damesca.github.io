@@ -1,0 +1,62 @@
+# ============================================================================
+#  International publications.  Newest first is conventional.
+#  (National publications go in publications_national.yml — same format.)
+#
+#  Fields per entry:
+#    title    (required)
+#    authors  (required) — full author list; your own name (matching profile.me)
+#                          is automatically bolded.
+#    venue    (required) — conference/journal, e.g. "CRYPTO 2024"
+#    year     (required)
+#    note     (optional) — e.g. "Best Paper Award", "to appear"
+#    links    (optional) — any subset of: pdf, eprint, doi, code, slides, video
+# ============================================================================
+
+- title: "Cavefish: Communication-Optimal Light Client Protocol for UTxO Ledgers"
+  authors: "Aggelos Kiayias, Marc Roeschlink, Polina Vinogradova, Daniel Morales, Pyrros Chaidos"
+  venue: "eprint"
+  year: 2026
+  links:
+    eprint: "https://eprint.iacr.org/2026/217"
+
+- title: "Zero-Knowledge Bitcoin Mixer with Reversible Unlinkability"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "Blockchain: Research and Applications"
+  year: 2025
+  links:
+    pdf: "https://www.sciencedirect.com/science/article/pii/S2096720925000508"
+
+- title: "A Lightweight Mechanism for Dynamic Secret Sharing of Private Data by Constrained Devices"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "IEEE Internet of Things"
+  year: 2025
+  links:
+    pdf: "https://ieeexplore.ieee.org/document/10938950"
+
+- title: "Toward a Framework for Cost-Effective and Publicly Verifiable Confidential Computations in Blockchain"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "IEEE Communications Magazine"
+  year: 2024
+  links:
+    pdf: "https://ieeexplore.ieee.org/abstract/document/10664017"
+
+- title: "Private set intersection: A systematic literature review"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "Computer Science Review"
+  year: 2023
+  links:
+    pdf: "https://www.sciencedirect.com/science/article/pii/S1574013723000345"
+
+- title: "Integration of MPC into Besu through an extended private transaction model"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "2023 IEEE International Conference on Metaverse Computing, Networking and Applications - MetaCom 2023"
+  year: 2023
+  links:
+    pdf: "https://ieeexplore.ieee.org/abstract/document/10271838"
+
+- title: "Real-time Crowd Counting based on Wearable Ephemeral IDs"
+  authors: "Daniel Morales, Isaac Agudo, Javier Lopez"
+  venue: "SECRYPT 2022"
+  year: 2022
+  links:
+    pdf: "https://www.scitepress.org/PublishedPapers/2022/113272/113272.pdf"

@@ -1,0 +1,166 @@
+<!--
+  Single-page CV layout.
+  You should not need to edit this file for normal updates — change the content
+  in _data/*.yml instead. Each section only renders if its data file has entries.
+-->
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+{% assign p = site.data.profile %}
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    {% if p.photo %}
+      <img class="avatar" src="{{ p.photo | relative_url }}" alt="{{ p.name }}">
+    {% endif %}
+    <h1>{{ p.name }}</h1>
+    {% if p.title %}<p class="role">{{ p.title }}</p>{% endif %}
+    {% if p.tagline %}<p class="tagline">{{ p.tagline }}</p>{% endif %}
+    {% if p.location %}<p class="location">{{ p.location }}</p>{% endif %}
+    {% include icon-links.html %}
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+  {% comment %} ---------- About ---------- {% endcomment %}
+  {% if p.bio %}
+  <section id="about">
+    <h2>About</h2>
+    <p>{{ p.bio }}</p>
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Research interests ---------- {% endcomment %}
+  {% if site.data.interests and site.data.interests.size > 0 %}
+  <section id="research">
+    <h2>Research Interests</h2>
+    <ul class="tags">
+      {% for item in site.data.interests %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Publications (international) ---------- {% endcomment %}
+  {% if site.data.publications and site.data.publications.size > 0 %}
+  <section id="publications">
+    <h2>International Publications</h2>
+    {% include pub-list.html pubs=site.data.publications %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Publications (national) ---------- {% endcomment %}
+  {% if site.data.publications_national and site.data.publications_national.size > 0 %}
+  <section id="publications-national">
+    <h2>National Publications</h2>
+    {% include pub-list.html pubs=site.data.publications_national %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Experience ---------- {% endcomment %}
+  {% if site.data.experience and site.data.experience.size > 0 %}
+  <section id="experience">
+    <h2>Experience</h2>
+    {% for job in site.data.experience %}
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">{{ job.role }} · {{ job.org }}</span>
+        <span class="entry-dates">{{ job.dates }}</span>
+      </div>
+      {% if job.location %}<div class="entry-sub">{{ job.location }}</div>{% endif %}
+      {% if job.bullets %}
+      <ul>{% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Education ---------- {% endcomment %}
+  {% if site.data.education and site.data.education.size > 0 %}
+  <section id="education">
+    <h2>Education</h2>
+    {% for ed in site.data.education %}
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">{{ ed.degree }}</span>
+        <span class="entry-dates">{{ ed.dates }}</span>
+      </div>
+      <div class="entry-sub">{{ ed.institution }}{% if ed.location %}, {{ ed.location }}{% endif %}</div>
+      {% if ed.advisor %}<div class="entry-detail">Advisor: {{ ed.advisor }}</div>{% endif %}
+      {% if ed.thesis %}<div class="entry-detail">Thesis: <em>{{ ed.thesis }}</em></div>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Talks ---------- {% endcomment %}
+  {% if site.data.talks and site.data.talks.size > 0 %}
+  <section id="talks">
+    <h2>Selected Talks</h2>
+    {% for t in site.data.talks %}
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">{% if t.link %}<a href="{{ t.link }}" target="_blank" rel="noopener">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %}</span>
+        <span class="entry-dates">{{ t.dates }}</span>
+      </div>
+      <div class="entry-sub">{{ t.venue }}{% if t.location %}, {{ t.location }}{% endif %}</div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Awards ---------- {% endcomment %}
+  {% if site.data.awards and site.data.awards.size > 0 %}
+  <section id="awards">
+    <h2>Honors &amp; Awards</h2>
+    <ul class="award-list">
+      {% for a in site.data.awards %}
+      <li><span class="award-year">{{ a.year }}</span> <span class="award-name">{{ a.name }}</span>{% if a.detail %} — {{ a.detail }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Service ---------- {% endcomment %}
+  {% if site.data.service and site.data.service.size > 0 %}
+  <section id="service">
+    <h2>Service &amp; Teaching</h2>
+    <ul class="service-list">
+      {% for s in site.data.service %}
+      <li><strong>{{ s.role }}</strong>{% if s.year %} <span class="service-year">({{ s.year }})</span>{% endif %} — {{ s.detail }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% comment %} ---------- Skills ---------- {% endcomment %}
+  {% if site.data.skills and site.data.skills.size > 0 %}
+  <section id="skills">
+    <h2>Skills</h2>
+    {% for group in site.data.skills %}
+    <div class="skill-group">
+      <div class="skill-name">{{ group.name }}</div>
+      <ul class="tags">{% for it in group.items %}<li>{{ it }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% comment %} Any markdown written in index.md lands here. {% endcomment %}
+  {{ content }}
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ p.name }}. Built with <a href="https://jekyllrb.com/" rel="noopener" target="_blank">Jekyll</a>, hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+</body>
+</html>

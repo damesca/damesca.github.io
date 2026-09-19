@@ -1,0 +1,16 @@
+{% comment %}
+  Renders the row of contact / profile links from _data/profile.yml.
+  Any field left blank in profile.yml is skipped automatically.
+{% endcomment %}
+{% assign p = site.data.profile %}
+<ul class="links" aria-label="Profile links">
+  {% if p.email %}<li><a href="mailto:{{ p.email }}">Email</a></li>{% endif %}
+  {% if p.scholar %}<li><a href="{{ p.scholar }}" rel="me noopener" target="_blank">Google Scholar</a></li>{% endif %}
+  {% if p.orcid %}<li><a href="{{ p.orcid }}" rel="me noopener" target="_blank">ORCID</a></li>{% endif %}
+  {% if p.dblp %}<li><a href="{{ p.dblp }}" rel="me noopener" target="_blank">DBLP</a></li>{% endif %}
+  {% if p.eprint %}<li><a href="{{ p.eprint }}" rel="me noopener" target="_blank">IACR ePrint</a></li>{% endif %}
+  {% if p.github %}<li><a href="{{ p.github }}" rel="me noopener" target="_blank">GitHub</a></li>{% endif %}
+  {% if p.linkedin %}<li><a href="{{ p.linkedin }}" rel="me noopener" target="_blank">LinkedIn</a></li>{% endif %}
+  {% if p.website %}<li><a href="{{ p.website }}" rel="me noopener" target="_blank">Website</a></li>{% endif %}
+  {% if p.cv_pdf %}<li><a href="{{ p.cv_pdf | relative_url }}" class="pdf">CV (PDF)</a></li>{% endif %}
+</ul>

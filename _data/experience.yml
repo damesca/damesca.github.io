@@ -1,0 +1,29 @@
+# ============================================================================
+#  Professional / research experience.  Most recent first.
+#    role, org, dates (required); location, bullets (optional).
+# ============================================================================
+
+- role: "Postdoctoral Researcher"
+  org: "Archimedes - Athena Research and Innovation Center"
+  location: "Athens, Greece"
+  dates: "September 2026 - Current"
+  bullets:
+    - "Blockchain, Federated Learning, Game Theory, Privacy"
+
+- role: "Applied Cryptographer"
+  org: "Input Output Group"
+  location: "Remote"
+  dates: "November 2025 - February 2026"
+  bullets:
+    - "Applied Research & Innovation Team"
+    - "Project: Cavefish - A Blockchain Light Client (blind signatures, zk-SNARKs)"
+    - "Security analysis, benchmarking, prorotype support, optimizations design"
+
+- role: "Applied Cryptography Intern"
+  org: "Input Output Group"
+  location: "Remote"
+  dates: "July 2025 - October 2025"
+  bullets:
+    - "Applied Research & Innovation Team"
+    - "Deep analysis on SNARK libraries: benchmarking, arithmetization, proof systems"
+    - "Arkworks, Halo 2, Risc Zero, Folding"

@@ -1,0 +1,44 @@
+# ============================================================================
+#  Site configuration
+#  Edit the values in this file and in _data/*.yml, then rebuild.
+#  NOTE: after changing this file you must restart `docker compose up`
+#        (Jekyll does not hot-reload _config.yml).
+# ============================================================================
+
+# --- Identity (used by the browser tab, SEO tags, sitemap) ------------------
+title: "Daniel Morales — CV"
+description: ""
+author: "Daniel Morales"
+email: "damesca.crypto@protonmail.com"
+
+# --- URLs -------------------------------------------------------------------
+# `url`     : your site's origin, no trailing slash.
+# `baseurl` : subpath the site is served from.
+#
+#   Project page  -> repo named "gh-cv"          => baseurl: "/gh-cv"
+#                    served at https://<user>.github.io/gh-cv/
+#   User page     -> repo named "<user>.github.io" => baseurl: ""
+#                    served at https://<user>.github.io/
+#
+# All internal links in the templates use the `relative_url` filter, so you
+# only ever have to change these two lines.
+url: "https://damesca.github.io"
+baseurl: "/cv"
+
+# --- Build ------------------------------------------------------------------
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Files that should never appear in the built site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - docker-compose.yml
+  - vendor
+  - .github
+  - .bundle
+
+# Cleaner output URLs (no .html suffixes).
+permalink: pretty

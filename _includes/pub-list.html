@@ -1,0 +1,29 @@
+{% comment %}
+  Renders one publication list.
+  Pass the list to render as `pubs`, e.g.:
+      {% include pub-list.html pubs=site.data.publications %}
+  Your own name (profile.me) is automatically bolded.
+{% endcomment %}
+{% assign me = site.data.profile.me %}
+{% capture bolded %}<strong>{{ me }}</strong>{% endcapture %}
+<ol class="pub-list">
+  {% for pub in include.pubs %}
+  <li class="pub">
+    <div class="pub-title">{{ pub.title }}</div>
+    <div class="pub-authors">{{ pub.authors | replace: me, bolded }}</div>
+    <div class="pub-meta">
+      <span class="venue">{{ pub.venue }} {{ pub.year }}</span>{% if pub.note %} <span class="pub-note">· {{ pub.note }}</span>{% endif %}
+    </div>
+    {% if pub.links %}
+    <div class="pub-links">
+      {% if pub.links.pdf %}<a href="{{ pub.links.pdf }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+      {% if pub.links.eprint %}<a href="{{ pub.links.eprint }}" target="_blank" rel="noopener">ePrint</a>{% endif %}
+      {% if pub.links.doi %}<a href="{{ pub.links.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
+      {% if pub.links.code %}<a href="{{ pub.links.code }}" target="_blank" rel="noopener">Code</a>{% endif %}
+      {% if pub.links.slides %}<a href="{{ pub.links.slides }}" target="_blank" rel="noopener">Slides</a>{% endif %}
+      {% if pub.links.video %}<a href="{{ pub.links.video }}" target="_blank" rel="noopener">Video</a>{% endif %}
+    </div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ol>
