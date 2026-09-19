@@ -23,7 +23,7 @@ email: "damesca.crypto@protonmail.com"
 # All internal links in the templates use the `relative_url` filter, so you
 # only ever have to change these two lines.
 url: "https://damesca.github.io"
-baseurl: "/cv"
+baseurl: ""
 
 # --- Build ------------------------------------------------------------------
 plugins:
