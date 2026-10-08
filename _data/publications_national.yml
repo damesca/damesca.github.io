@@ -1,9 +1,10 @@
 # ============================================================================
 #  National publications.  Newest first is conventional.
 #  Same format as publications.yml (international) — see that file for the
-#  full field reference.
+#  full field reference, including `id` and the featured-card fields.
 #
 #  Fields per entry:
+#    id       (required) — unique slug, used as the entry's #anchor
 #    title    (required)
 #    authors  (required) — full author list; your own name (matching profile.me)
 #                          is automatically bolded.
@@ -11,26 +12,30 @@
 #    year     (required)
 #    note     (optional) — e.g. "Best Paper Award", "to appear"
 #    links    (optional) — any subset of: pdf, eprint, doi, code, slides, video
+#    featured / featured_order / card_summary (optional) — see publications.yml
 #
 #  Leave this file with no entries (just these comments) to hide the whole
 #  "National Publications" section.
 # ============================================================================
 
-- title: "EIP 712-based Off-Chain Oracles: Benefits and Caveats"
+- id: eip712-offchain-oracles-2026
+  title: "EIP 712-based Off-Chain Oracles: Benefits and Caveats"
   authors: "Daniel Morales, Isaac Agudo"
   venue: "XIX Reunión Española sobre Criptología y Seguridad de la Información - RECSI 2026"
   year: 2026
   links:
     eprint: "https://cryptull.webs.ull.es/RECSI2026/"
 
-- title: "Cryptographic approaches for confidential computations in blockchain"
+- id: confidential-computations-jitel-2023
+  title: "Cryptographic approaches for confidential computations in blockchain"
   authors: "Daniel Morales, Isaac Agudo"
   venue: "XVI Jornadas de Ingeniería Telemática - JITEL 2023"
   year: 2023
   links:
     pdf: "https://riuma.uma.es/rest/api/core/bitstreams/866c67c9-c1a3-4554-a9b9-7e9ebdb40ddf/content"
 
-- title: "Prueba de concepto de Autoridad de Certificacion usando Computacion Segura Multiparte"
+- id: mpc-ca-poc-jitel-2019
+  title: "Prueba de concepto de Autoridad de Certificacion usando Computacion Segura Multiparte"
   authors: "Daniel Morales, Isaac Agudo"
   venue: "XIV Jornadas de Ingeniería Telemática - JITEL 2019"
   year: 2019

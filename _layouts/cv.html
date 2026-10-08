@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Inverted-pyramid CV layout: the essentials visible at a glance, the full
+  detail below on demand.
+
+    [1] header        — photo, name, position, profile links   (hero.html)
+    [2] two columns   — about + interests | selected work      (intro.html,
+                                                                featured.html)
+    [3] full CV       — collapsible sections                   (cv-full.html)
+
+  Not a single CV datum is written here: everything comes from _data/*.yml.
+  To change content, edit those YAML files.
+
+  The previous single-page layout is still in _layouts/default.html if you ever
+  want to look back at it.
+-->
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  {% include head.html %}
+
+  {% comment %} Layout-specific additions (the old layout loads neither). {% endcomment %}
+  <link rel="stylesheet" href="{{ 'assets/css/cv.css' | relative_url }}">
+
+  {% comment %} Applies a saved theme choice before first paint so the page
+    never flashes the wrong colours.  No choice saved (or storage blocked)
+    => prefers-color-scheme decides, which is the default behaviour. {% endcomment %}
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('cv-theme');
+        if (t === 'dark' || t === 'light') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) { /* private mode, blocked storage: ignore */ }
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+{% include hero.html %}
+
+<main id="main">
+
+  {% comment %} ---------- Section 2: two columns ---------- {% endcomment %}
+  <section class="top-grid wrap" aria-label="Summary and selected work">
+    {% include intro.html %}
+    {% include featured.html %}
+  </section>
+
+  {% comment %} ---------- Section 3: full CV ---------- {% endcomment %}
+  <section id="cv-full" class="wrap" aria-label="Full CV">
+    {% include cv-full.html %}
+  </section>
+
+  {% comment %} Any markdown written in the page body lands here. {% endcomment %}
+  {% if content != "" %}
+  <section class="wrap page-content">{{ content }}</section>
+  {% endif %}
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.data.profile.name }}. Built with <a href="https://jekyllrb.com/" rel="noopener" target="_blank">Jekyll</a>, hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+<script src="{{ 'assets/js/cv.js' | relative_url }}" defer></script>
+</body>
+</html>

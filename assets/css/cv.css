@@ -1,0 +1,466 @@
+/* ==========================================================================
+   Redesigned CV — layered ON TOP of style.css, which is loaded first.
+
+   style.css already provides the colour tokens, the system font stack and the
+   entry/publication/tag rules; this file only adds what the new three-section
+   layout needs, plus the overrides for the theme switch.
+   ========================================================================== */
+
+/* --- Tokens ---------------------------------------------------------------
+   Wider page than the old single column: the top section is two columns.
+   --------------------------------------------------------------------------- */
+:root {
+  --maxw: 1060px;
+  --measure: 62ch;          /* comfortable reading width for body copy */
+  --radius: 10px;
+  --radius-sm: 6px;
+  --gap: 28px;
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.08);
+  --shadow-2: 0 2px 6px rgba(16, 24, 40, 0.07), 0 10px 22px rgba(16, 24, 40, 0.09);
+  --summary-hover: #f2f6fa;
+}
+
+/* --- Theme switch ---------------------------------------------------------
+   style.css flips the palette with @media (prefers-color-scheme: dark).  The
+   two blocks below let an explicit choice win in BOTH directions:
+   [data-theme] beats a bare :root on specificity, and cv.css loads last.
+   With no attribute set (no JS, or "auto") the media query stays in charge.
+   --------------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  --bg: #0e1013;
+  --fg: #e7e9ec;
+  --muted: #98a1ac;
+  --accent: #6db3f2;
+  --accent-soft: #16222f;
+  --border: #23282e;
+  --card: #14171b;
+  --tag-bg: #1c2127;
+  --tag-fg: #c7cdd4;
+  --summary-hover: #1b2026;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.45), 0 10px 22px rgba(0, 0, 0, 0.45);
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #1a1d21;
+  --muted: #5b6470;
+  --accent: #0b5cad;
+  --accent-soft: #e8f0fa;
+  --border: #e6e8eb;
+  --card: #fafbfc;
+  --tag-bg: #eef1f4;
+  --tag-fg: #33393f;
+  --summary-hover: #f2f6fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --summary-hover: #1b2026;
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.45), 0 10px 22px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* --- Shared bits ---------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Anchors land a little below the top edge instead of flush against it. */
+.cv-section, .pub, .entry, .card { scroll-margin-top: 20px; }
+
+/* --- Header (section 1) --------------------------------------------------- */
+.hero {
+  border-bottom: 1px solid var(--border);
+  padding: 34px 0 26px;
+}
+.hero-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.hero-photo {
+  flex: 0 0 auto;
+  width: 128px; height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+}
+.hero-text { min-width: 0; }
+.hero-text h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 1.1rem + 2vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.hero-role {
+  margin: 5px 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.hero-tagline {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+.hero-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.hero-location svg { width: 14px; height: 14px; fill: currentColor; flex: 0 0 auto; }
+
+/* --- Icon links ----------------------------------------------------------- */
+.iconlinks {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.iconlink {
+  display: grid;
+  place-items: center;
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--fg);
+  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease,
+              transform 0.16s ease;
+}
+.iconlink svg { width: 19px; height: 19px; fill: currentColor; }
+.iconlink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 15px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.87rem;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+.btn svg { width: 16px; height: 16px; fill: currentColor; }
+.btn:hover { border-color: var(--accent); text-decoration: none; }
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.btn-primary:hover { box-shadow: var(--shadow-2); color: #fff; }
+
+.btn-ghost { font-size: 0.82rem; padding: 6px 13px; color: var(--muted); }
+.btn-ghost:hover { color: var(--accent); }
+
+.cv-download { margin: 14px 0 0; }
+
+.theme-toggle {
+  position: absolute;
+  top: 0; right: 20px;          /* lines up with .wrap's content edge */
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; fill: currentColor; }
+/* Only the icon for the current state is shown; cv.js sets data-state. */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon,
+.theme-toggle .icon-auto { display: none; }
+.theme-toggle[data-state="light"] .icon-sun,
+.theme-toggle[data-state="dark"] .icon-moon,
+.theme-toggle[data-state="auto"] .icon-auto { display: block; }
+
+/* --- Section 2: two columns ---------------------------------------------- */
+.top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: var(--gap);
+  align-items: start;
+  margin-top: 34px;
+}
+
+/* style.css styles `section h2` as a bordered uppercase rule; keep that look
+   for the two column headings, which sit side by side. */
+.col-heading {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent-soft);
+  padding-bottom: 6px;
+  margin: 0 0 14px;
+}
+
+.intro-bio {
+  margin: 0;
+  max-width: var(--measure);
+}
+.chips-heading {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 22px 0 10px;
+}
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0; margin: 0;
+}
+.chips li {
+  background: var(--accent-soft);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+
+/* --- Featured cards ------------------------------------------------------- */
+.card-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  padding: 0; margin: 0;
+}
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 13px 15px;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: var(--accent);
+}
+.pill {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.pill-paper { background: var(--accent-soft); color: var(--accent); }
+.pill-project { background: var(--tag-bg); color: var(--tag-fg); }
+
+.card-title {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+.card-title a { color: var(--fg); }
+.card:hover .card-title a { color: var(--accent); }
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.card-summary {
+  margin: 6px 0 0;
+  font-size: 0.87rem;
+  color: var(--fg);
+}
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 9px 0 0;
+}
+.card-links a {
+  font-size: 0.76rem;
+  padding: 2px 9px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.card-links a:hover { border-color: var(--accent); text-decoration: none; }
+
+/* --- Section 3: collapsible full CV -------------------------------------- */
+#cv-full { margin-top: 44px; }
+
+.cv-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 30px;
+  margin-bottom: 10px;
+}
+
+.cv-section {
+  border-bottom: 1px solid var(--border);
+}
+.cv-section:first-of-type { border-top: 1px solid var(--border); }
+
+.cv-summary {
+  display: flex;
+  align-items: center;
+  padding: 14px 4px;
+  cursor: pointer;
+  list-style: none;              /* hides the default marker (Firefox) */
+  transition: background 0.16s ease;
+}
+.cv-summary::-webkit-details-marker { display: none; }  /* Safari */
+.cv-summary:hover { background: var(--summary-hover); }
+
+.cv-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  border: 0;
+  padding: 0;
+}
+.cv-heading-text { font-weight: 700; }
+.chevron {
+  width: 15px; height: 15px;
+  flex: 0 0 auto;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+.cv-section[open] > .cv-summary .chevron { transform: rotate(90deg); }
+
+.cv-count {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--muted);
+  background: var(--tag-bg);
+  border-radius: 999px;
+  padding: 1px 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-body { padding: 2px 4px 24px; }
+
+/* A soft reveal that needs no height measuring, so it works without JS. */
+.cv-section[open] > .cv-body { animation: cv-reveal 0.22s ease-out; }
+@keyframes cv-reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Deep-link feedback: cv.js adds .is-target to whatever the hash points at. */
+.is-target { animation: cv-flash 2s ease-out; border-radius: var(--radius-sm); }
+@keyframes cv-flash {
+  0%, 20% { background: var(--accent-soft); box-shadow: 0 0 0 6px var(--accent-soft); }
+  100%    { background: transparent; box-shadow: 0 0 0 6px transparent; }
+}
+
+.tags-sm { margin-top: 8px; }
+.tags-sm li { font-size: 0.78rem; padding: 2px 9px; }
+
+.page-content { margin-top: 36px; }
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 860px) {
+  .top-grid {
+    grid-template-columns: 1fr;   /* about first, then selected work */
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 26px 0 22px; }
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding-top: 6px;             /* room for the theme button */
+  }
+  .hero-photo { width: 96px; height: 96px; }
+  .iconlinks { justify-content: center; }
+  .top-grid { margin-top: 28px; }
+  .cv-heading { font-size: 0.92rem; gap: 8px; }
+  .cv-summary { padding: 13px 2px; }
+}
+
+/* --- Motion preferences --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card:hover { transform: none; }
+}
+
+/* --- Print / Save-as-PDF -------------------------------------------------
+   cv.js opens every section before printing and restores the state after.
+   The rules below are the fallback for browsers that skip those events.
+   --------------------------------------------------------------------------- */
+@media print {
+  .theme-toggle,
+  .cv-toolbar,
+  .cv-download,
+  .skip-link { display: none !important; }
+
+  .cv-section > .cv-body,
+  .cv-section:not([open]) > .cv-body {
+    display: block !important;
+    content-visibility: visible !important;
+  }
+  .cv-section[open] > .cv-body { animation: none; }
+  .chevron { display: none; }
+
+  .hero { padding: 0 0 12px; }
+  .hero-photo { width: 84px; height: 84px; }
+  .top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .card, .cv-section, .pub, .entry { break-inside: avoid; box-shadow: none; }
+  #cv-full { margin-top: 18px; }
+  .cv-body { padding-bottom: 10px; }
+  .iconlink { width: auto; height: auto; border: 0; background: none; }
+}

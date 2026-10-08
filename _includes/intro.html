@@ -1,0 +1,21 @@
+{% comment %}
+  Section 2a — left column: who this is and what they work on.
+  Bio comes from _data/profile.yml, the chips from _data/interests.yml
+  (edit that list and the chips follow).
+{% endcomment %}
+{% assign p = site.data.profile %}
+<div class="intro">
+
+  {% if p.bio %}
+  <h2 class="col-heading" id="about">About</h2>
+  <p class="intro-bio">{{ p.bio }}</p>
+  {% endif %}
+
+  {% if site.data.interests and site.data.interests.size > 0 %}
+  <h3 class="chips-heading" id="research">Research interests</h3>
+  <ul class="chips">
+    {% for item in site.data.interests %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+</div>

@@ -1,0 +1,27 @@
+{% comment %}
+  Opens one collapsible block of the full CV (section 3).
+  Liquid includes cannot wrap a block of markup, hence the open/close pair:
+
+      {% include details-open.html id="talks" heading="Selected Talks" count=2 %}
+        ...section body...
+      {% include details-close.html %}
+
+  Parameters:
+    id      — anchor for the section (#talks); also what deep links target
+    heading — visible title
+    count   — number of entries; omit when a count says nothing useful
+    open    — pass open=true to have it expanded on load
+
+  Native <details>/<summary>: works with JavaScript disabled, keyboard- and
+  screen-reader-accessible out of the box, and the content stays in the HTML
+  so search engines and Ctrl+F (once expanded) can see it.
+{% endcomment %}
+<details class="cv-section" id="{{ include.id }}"{% if include.open %} open{% endif %}>
+  <summary class="cv-summary">
+    <h2 class="cv-heading">
+      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="cv-heading-text">{{ include.heading }}</span>
+      {% if include.count %}<span class="cv-count">{{ include.count }}</span>{% endif %}
+    </h2>
+  </summary>
+  <div class="cv-body">

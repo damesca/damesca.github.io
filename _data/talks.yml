@@ -1,15 +1,19 @@
 # ============================================================================
 #  Invited talks & selected presentations.  Most recent first.
 #  Empty this file ([]) to hide the whole section.
-#    title, venue, dates (required); location, link (optional).
+#    title, venue, dates (required); id, location, link (optional).
+#
+#  `id` is the entry's #anchor; omit it and one is derived from the title.
 # ============================================================================
 
-- title: "Secret Sharing Dealing from Encrypted Data"
+- id: talk-secret-sharing-encrypted-data-2025
+  title: "Secret Sharing Dealing from Encrypted Data"
   venue: "Workshop on secret sharing schemes"
   location: "Tarragona, Spain"
   dates: "2025"
 
-- title: "Cryptographic mechanisms for Anonymous payments in blockchain"
+- id: talk-anonymous-payments-blockchain-2024
+  title: "Cryptographic mechanisms for Anonymous payments in blockchain"
   venue: "Crypto Seminars"
   location: "Universitat Politècnica de Catalunya, Spain"
   dates: "2024"

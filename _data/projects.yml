@@ -1,0 +1,38 @@
+# ============================================================================
+#  Projects / implementations.  Most recent first.
+#
+#  This file is intentionally EMPTY: while it has no entries, the whole
+#  "Projects" section stays hidden and nothing appears in the featured cards.
+#  Uncomment the block below (or add your own) to switch the section on.
+#
+#  Fields per entry:
+#    id            (required) — unique slug, used as the entry's #anchor.
+#                               Don't change it once published.
+#    name          (required) — project name
+#    description   (required) — a line or two
+#    year          (optional)
+#    technologies  (optional) — list, e.g. [Rust, Python]
+#    links         (optional) — any subset of: repo, demo, paper, docs
+#
+#  --- Featured works (the cards in the top-right column) -------------------
+#    featured        (optional) — true to show it as a card up top
+#    featured_order  (optional) — position among the cards; lower comes first.
+#                                 Numbers are shared with publications.yml and
+#                                 publications_national.yml, so don't reuse one
+#                                 that is already taken there (1-5 are in use).
+#    card_summary    (optional) — one sentence shown on the card
+#
+#  At most 6 cards are ever rendered, no matter how many entries are flagged.
+# ============================================================================
+
+# - id: my-project
+#   name: "Project name"
+#   description: "What it does and why it exists."
+#   year: 2025
+#   technologies: [Rust, Python]
+#   links:
+#     repo: "https://github.com/damesca/..."
+#     demo: ""
+#   featured: true
+#   featured_order: 6
+#   card_summary: "One sentence for the card."

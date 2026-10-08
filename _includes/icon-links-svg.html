@@ -1,0 +1,88 @@
+{% comment %}
+  Icon row for the header (section 1), driven entirely by _data/profile.yml.
+  Any field left blank or commented out there is skipped automatically.
+
+  Icons are inline SVG on purpose: no icon font, no external request, and they
+  inherit the current text colour so dark mode needs no extra work.
+  Every link carries an aria-label because its text is an icon.
+
+  The plain-text version of this row (used by the older default.html layout)
+  lives in icon-links.html; both read the same data.
+{% endcomment %}
+{% assign p = site.data.profile %}
+<ul class="iconlinks" aria-label="Contact and profile links">
+
+  {% if p.email %}
+  <li>
+    <a class="iconlink" href="mailto:{{ p.email }}" aria-label="Email" title="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M1.5 5.25A2.25 2.25 0 0 1 3.75 3h16.5a2.25 2.25 0 0 1 2.25 2.25v.63l-10.5 6.3L1.5 5.88v-.63Zm0 3.35v10.15A2.25 2.25 0 0 0 3.75 21h16.5a2.25 2.25 0 0 0 2.25-2.25V8.6l-9.73 5.84a1.5 1.5 0 0 1-1.54 0L1.5 8.6Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.scholar %}
+  <li>
+    <a class="iconlink" href="{{ p.scholar }}" rel="me noopener" target="_blank" aria-label="Google Scholar profile" title="Google Scholar">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.dblp %}
+  <li>
+    <a class="iconlink" href="{{ p.dblp }}" rel="me noopener" target="_blank" aria-label="DBLP bibliography" title="DBLP">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2c-4.42 0-8 1.343-8 3s3.58 3 8 3 8-1.343 8-3-3.58-3-8-3Zm8 5.4v2.1c0 1.657-3.58 3-8 3s-8-1.343-8-3V7.4c1.6 1.3 4.6 2.1 8 2.1s6.4-.8 8-2.1Zm0 4.5V14c0 1.657-3.58 3-8 3s-8-1.343-8-3v-2.1c1.6 1.3 4.6 2.1 8 2.1s6.4-.8 8-2.1Zm0 4.5v2.1c0 1.657-3.58 3-8 3s-8-1.343-8-3v-2.1c1.6 1.3 4.6 2.1 8 2.1s6.4-.8 8-2.1Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.orcid %}
+  <li>
+    <a class="iconlink" href="{{ p.orcid }}" rel="me noopener" target="_blank" aria-label="ORCID record" title="ORCID">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0ZM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947Zm-.722 3.038h1.444v10.041H6.647V7.416Zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416Zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.eprint %}
+  <li>
+    <a class="iconlink" href="{{ p.eprint }}" rel="me noopener" target="_blank" aria-label="IACR ePrint author page" title="IACR ePrint">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm-1 2.5L18.5 10H14a1 1 0 0 1-1-1V4.5ZM8 13h8v1.8H8V13Zm0 3.6h8v1.8H8v-1.8Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.github %}
+  <li>
+    <a class="iconlink" href="{{ p.github }}" rel="me noopener" target="_blank" aria-label="GitHub profile" title="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.linkedin %}
+  <li>
+    <a class="iconlink" href="{{ p.linkedin }}" rel="me noopener" target="_blank" aria-label="LinkedIn profile" title="LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.064 2.064 0 1 1 0-4.129 2.064 2.064 0 0 1 0 4.129Zm1.782 13.019H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+  {% if p.website %}
+  <li>
+    <a class="iconlink" href="{{ p.website }}" rel="me noopener" target="_blank" aria-label="Personal website" title="Website">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.6 15.6 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96ZM4.26 14a7.96 7.96 0 0 1 0-4h3.38a16.6 16.6 0 0 0 0 4H4.26Zm.81 2h2.95c.33 1.27.8 2.47 1.38 3.56A8.03 8.03 0 0 1 5.07 16Zm2.95-8H5.07A8.03 8.03 0 0 1 9.4 4.44 15.6 15.6 0 0 0 8.02 8ZM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96ZM14.34 14H9.66a14.5 14.5 0 0 1 0-4h4.68a14.5 14.5 0 0 1 0 4Zm.26 5.56c.58-1.09 1.05-2.29 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.6 16.6 0 0 0 0-4h3.38a7.96 7.96 0 0 1 0 4h-3.38Z"/></svg>
+    </a>
+  </li>
+  {% endif %}
+
+</ul>
+
+{% if p.cv_pdf %}
+<p class="cv-download">
+  <a class="btn btn-primary" href="{{ p.cv_pdf | relative_url }}" download>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1Zm-8 15a1 1 0 0 1 1-1h14a1 1 0 0 1 0 2H5a1 1 0 0 1-1-1Z"/></svg>
+    Download CV (PDF)
+  </a>
+</p>
+{% endif %}

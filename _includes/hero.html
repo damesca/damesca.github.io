@@ -1,0 +1,39 @@
+{% comment %}
+  Section 1 — header.  Identity in one glance plus the academic profile links,
+  which is the first thing an evaluator looks for.  Deliberately short: if it
+  fills half the screen it pushes the important part below the fold.
+  All content comes from _data/profile.yml.
+{% endcomment %}
+{% assign p = site.data.profile %}
+<header class="hero">
+  <div class="wrap hero-inner">
+
+    {% comment %} Theme switch: light -> dark -> auto.  Hidden until cv.js
+      reveals it, so no dead button when JavaScript is off. {% endcomment %}
+    <button type="button" class="theme-toggle" id="theme-toggle" hidden
+            aria-label="Change colour theme" title="Change colour theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1Zm0-16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V4a1 1 0 0 1 1-1Zm9 9a1 1 0 0 1-1 1h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1ZM5 12a1 1 0 0 1-1 1H3a1 1 0 0 1 0-2h1a1 1 0 0 1 1 1Zm13.07-6.07a1 1 0 0 1 0 1.41l-.7.71a1 1 0 0 1-1.42-1.42l.71-.7a1 1 0 0 1 1.41 0ZM7.05 16.95a1 1 0 0 1 0 1.41l-.71.71a1 1 0 0 1-1.41-1.41l.7-.71a1 1 0 0 1 1.42 0Zm11.31 2.12a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.7a1 1 0 0 1 0 1.42ZM5.64 5.64a1 1 0 0 1 1.41 0l.71.71A1 1 0 0 1 6.34 7.76l-.7-.71a1 1 0 0 1 0-1.41Z"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.75 15.5A9.75 9.75 0 0 1 8.5 2.25a.75.75 0 0 0-1-.84A10.5 10.5 0 1 0 22.6 16.5a.75.75 0 0 0-.85-1Z"/></svg>
+      <svg class="icon-auto" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16V4Z"/></svg>
+    </button>
+
+    {% if p.photo %}
+    <img class="hero-photo" src="{{ p.photo | relative_url }}"
+         alt="Portrait of {{ p.name }}" width="128" height="128">
+    {% endif %}
+
+    <div class="hero-text">
+      <h1>{{ p.name }}</h1>
+      {% if p.title %}<p class="hero-role">{{ p.title }}</p>{% endif %}
+      {% if p.tagline %}<p class="hero-tagline">{{ p.tagline }}</p>{% endif %}
+      {% if p.location %}
+      <p class="hero-location">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+        {{ p.location }}
+      </p>
+      {% endif %}
+      {% include icon-links-svg.html %}
+    </div>
+
+  </div>
+</header>

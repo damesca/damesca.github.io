@@ -7,9 +7,27 @@
 
 # --- Identity (used by the browser tab, SEO tags, sitemap) ------------------
 title: "Daniel Morales — CV"
-description: ""
+# Shown in search results and whenever the link is shared. Keep it to ~160
+# characters; jekyll-seo-tag turns it into <meta name="description"> and the
+# Open Graph description.
+description: "Applied cryptography researcher and engineer (PhD). Secure multi-party computation, zero-knowledge proofs, post-quantum cryptography and blockchain."
 author: "Daniel Morales"
 email: "damesca.crypto@protonmail.com"
+lang: "en"
+
+# Preview image used when the link is shared (Open Graph / Twitter cards).
+# Leading slash: jekyll-seo-tag makes it absolute using `url` below.
+image: "/assets/dani_profile.jpg"
+
+# Profiles that identify you; jekyll-seo-tag emits them as JSON-LD sameAs,
+# which helps search engines tie the page to your academic identity.
+social:
+  name: "Daniel Morales"
+  links:
+    - "https://scholar.google.com/citations?user=exdZ-7YAAAAJ"
+    - "https://orcid.org/0000-0002-6932-7437"
+    - "https://github.com/damesca"
+    - "https://www.linkedin.com/in/daniel-morales-escalera/"
 
 # --- URLs -------------------------------------------------------------------
 # `url`     : your site's origin, no trailing slash.
