@@ -24,6 +24,17 @@
 #  At most 6 cards are ever rendered, no matter how many entries are flagged.
 # ============================================================================
 
+- id: dealing-haystack-2026
+  title: "Dealing Haystack: Towards Trustless Haystack in the Optimistic Setting"
+  authors: "Isabel Muñoz, Isaac Agudo, Marco López, Daniel Morales"
+  venue: "IACR ePrint"
+  year: 2026
+  liks:
+    eprint: "https://eprint.iacr.org/2026/1804"
+  featured: true
+  featured_order: 1
+  card_summary: "A variation of Haystack (threshold HSB signature) with a relaxed trust assumption placed in the dealer."
+
 - id: cavefish-light-client-2026
   title: "Cavefish: Communication-Optimal Light Client Protocol for UTxO Ledgers"
   authors: "Aggelos Kiayias, Marc Roeschlink, Polina Vinogradova, Daniel Morales, Pyrros Chaidos"
@@ -32,7 +43,7 @@
   links:
     eprint: "https://eprint.iacr.org/2026/217"
   featured: true
-  featured_order: 1
+  featured_order: 2
   card_summary: "A communication-optimal light client for UTxO ledgers, built on blind signatures and zk-SNARKs."
 
 - id: zk-bitcoin-mixer-2025
@@ -43,7 +54,7 @@
   links:
     pdf: "https://www.sciencedirect.com/science/article/pii/S2096720925000508"
   featured: true
-  featured_order: 2
+  featured_order: 3
   card_summary: "A Bitcoin mixer whose unlinkability can be reversed under well-defined conditions, using zero-knowledge proofs."
 
 - id: dynamic-secret-sharing-iot-2025
@@ -53,8 +64,8 @@
   year: 2025
   links:
     pdf: "https://ieeexplore.ieee.org/document/10938950"
-  featured: true
-  featured_order: 3
+  featured: false
+  featured_order: 0
   card_summary: "Dynamic secret sharing of private data brought within reach of resource-constrained IoT devices."
 
 - id: confidential-computations-blockchain-2024
@@ -75,8 +86,8 @@
   year: 2023
   links:
     pdf: "https://www.sciencedirect.com/science/article/pii/S1574013723000345"
-  featured: true
-  featured_order: 5
+  featured: false
+  featured_order: 0
   card_summary: "A systematic review mapping the private set intersection landscape: constructions, assumptions and costs."
 
 - id: mpc-besu-private-transactions-2023
