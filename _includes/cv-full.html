@@ -1,0 +1,148 @@
+{% comment %}
+  Section 3 — the full CV, one collapsible block per section.
+
+  Order is deliberate: publications first (what the academic audience looks
+  for, and the only one expanded by default), then the career, then everything
+  else.  Every block renders only if its data file has entries, so emptying a
+  YAML file hides its section.
+
+  The markup inside each block is the same as the previous single-page layout,
+  so the existing style.css rules (.entry, .pub-*, .tags, .award-list,
+  .service-list) keep working.
+{% endcomment %}
+
+{% assign none = "" | split: "," %}
+{% assign projects = site.data.projects | default: none %}
+
+<div class="cv-toolbar">
+  {% comment %} Revealed by cv.js; without JavaScript each block still opens
+    on click, so a button that does nothing would just be noise. {% endcomment %}
+  <button type="button" class="btn btn-ghost" id="expand-all" hidden aria-expanded="false">
+    Expand all
+  </button>
+</div>
+
+{% comment %} ---------- International publications (open by default) ---------- {% endcomment %}
+{% if site.data.publications and site.data.publications.size > 0 %}
+  {% include details-open.html id="publications" heading="International Publications" count=site.data.publications.size open=true %}
+    {% include pub-list.html pubs=site.data.publications %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- National publications ---------- {% endcomment %}
+{% if site.data.publications_national and site.data.publications_national.size > 0 %}
+  {% include details-open.html id="publications-national" heading="National Publications" count=site.data.publications_national.size %}
+    {% include pub-list.html pubs=site.data.publications_national %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Experience ---------- {% endcomment %}
+{% if site.data.experience and site.data.experience.size > 0 %}
+  {% include details-open.html id="experience" heading="Experience" count=site.data.experience.size %}
+    {% for job in site.data.experience %}
+    {% assign job_role_org = job.role | append: " " | append: job.org %}
+    <div class="entry" id="{{ job.id | default: job_role_org | slugify }}">
+      <div class="entry-head">
+        <span class="entry-title">{{ job.role }} · {{ job.org }}</span>
+        <span class="entry-dates">{{ job.dates }}</span>
+      </div>
+      {% if job.location %}<div class="entry-sub">{{ job.location }}</div>{% endif %}
+      {% if job.bullets %}
+      <ul>{% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Education ---------- {% endcomment %}
+{% if site.data.education and site.data.education.size > 0 %}
+  {% include details-open.html id="education" heading="Education" count=site.data.education.size %}
+    {% for ed in site.data.education %}
+    <div class="entry" id="{{ ed.id | default: ed.degree | slugify }}">
+      <div class="entry-head">
+        <span class="entry-title">{{ ed.degree }}</span>
+        <span class="entry-dates">{{ ed.dates }}</span>
+      </div>
+      <div class="entry-sub">{{ ed.institution }}{% if ed.location %}, {{ ed.location }}{% endif %}</div>
+      {% if ed.advisor %}<div class="entry-detail">Advisor: {{ ed.advisor }}</div>{% endif %}
+      {% if ed.thesis %}<div class="entry-detail">Thesis: <em>{{ ed.thesis }}</em></div>{% endif %}
+    </div>
+    {% endfor %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Projects (hidden while projects.yml is empty) ---------- {% endcomment %}
+{% if projects.size > 0 %}
+  {% include details-open.html id="projects" heading="Projects" count=projects.size %}
+    {% for pr in projects %}
+    <div class="entry" id="{{ pr.id | default: pr.name | slugify }}">
+      <div class="entry-head">
+        <span class="entry-title">{{ pr.name }}</span>
+        {% if pr.year %}<span class="entry-dates">{{ pr.year }}</span>{% endif %}
+      </div>
+      {% if pr.description %}<div class="entry-detail">{{ pr.description }}</div>{% endif %}
+      {% if pr.technologies %}
+      <ul class="tags tags-sm">{% for t in pr.technologies %}<li>{{ t }}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if pr.links %}
+      <div class="pub-links">
+        {% if pr.links.repo %}<a href="{{ pr.links.repo }}" target="_blank" rel="noopener">Repository</a>{% endif %}
+        {% if pr.links.demo %}<a href="{{ pr.links.demo }}" target="_blank" rel="noopener">Demo</a>{% endif %}
+        {% if pr.links.paper %}<a href="{{ pr.links.paper }}" target="_blank" rel="noopener">Paper</a>{% endif %}
+        {% if pr.links.docs %}<a href="{{ pr.links.docs }}" target="_blank" rel="noopener">Docs</a>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Talks ---------- {% endcomment %}
+{% if site.data.talks and site.data.talks.size > 0 %}
+  {% include details-open.html id="talks" heading="Selected Talks" count=site.data.talks.size %}
+    {% for t in site.data.talks %}
+    <div class="entry" id="{{ t.id | default: t.title | slugify }}">
+      <div class="entry-head">
+        <span class="entry-title">{% if t.link %}<a href="{{ t.link }}" target="_blank" rel="noopener">{{ t.title }}</a>{% else %}{{ t.title }}{% endif %}</span>
+        <span class="entry-dates">{{ t.dates }}</span>
+      </div>
+      <div class="entry-sub">{{ t.venue }}{% if t.location %}, {{ t.location }}{% endif %}</div>
+    </div>
+    {% endfor %}
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Service & teaching ---------- {% endcomment %}
+{% if site.data.service and site.data.service.size > 0 %}
+  {% include details-open.html id="service" heading="Service &amp; Teaching" count=site.data.service.size %}
+    <ul class="service-list">
+      {% for s in site.data.service %}
+      <li><strong>{{ s.role }}</strong>{% if s.year %} <span class="service-year">({{ s.year }})</span>{% endif %} — {{ s.detail }}</li>
+      {% endfor %}
+    </ul>
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Awards ---------- {% endcomment %}
+{% if site.data.awards and site.data.awards.size > 0 %}
+  {% include details-open.html id="awards" heading="Honors &amp; Awards" count=site.data.awards.size %}
+    <ul class="award-list">
+      {% for a in site.data.awards %}
+      <li><span class="award-year">{{ a.year }}</span> <span class="award-name">{{ a.name }}</span>{% if a.detail %} — {{ a.detail }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+  {% include details-close.html %}
+{% endif %}
+
+{% comment %} ---------- Skills (no count: counting groups says nothing) ---------- {% endcomment %}
+{% if site.data.skills and site.data.skills.size > 0 %}
+  {% include details-open.html id="skills" heading="Skills" %}
+    {% for group in site.data.skills %}
+    <div class="skill-group">
+      <div class="skill-name">{{ group.name }}</div>
+      <ul class="tags">{% for it in group.items %}<li>{{ it }}</li>{% endfor %}</ul>
+    </div>
+    {% endfor %}
+  {% include details-close.html %}
+{% endif %}

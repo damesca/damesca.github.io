@@ -1,16 +1,22 @@
 # ============================================================================
 #  Professional / research experience.  Most recent first.
-#    role, org, dates (required); location, bullets (optional).
+#    role, org, dates (required); id, location, bullets (optional).
+#
+#  `id` is the entry's #anchor (https://damesca.github.io/#<id>). If you omit
+#  it, one is derived from "<role> <org>"; adding it explicitly keeps the link
+#  stable even if you later reword the role.
 # ============================================================================
 
-- role: "Postdoctoral Researcher"
+- id: postdoc-archimedes
+  role: "Postdoctoral Researcher"
   org: "Archimedes - Athena Research and Innovation Center"
   location: "Athens, Greece"
   dates: "September 2026 - Current"
   bullets:
     - "Blockchain, Federated Learning, Game Theory, Privacy"
 
-- role: "Applied Cryptographer"
+- id: iog-applied-cryptographer
+  role: "Applied Cryptographer"
   org: "Input Output Group"
   location: "Remote"
   dates: "November 2025 - February 2026"
@@ -19,7 +25,8 @@
     - "Project: Cavefish - A Blockchain Light Client (blind signatures, zk-SNARKs)"
     - "Security analysis, benchmarking, prorotype support, optimizations design"
 
-- role: "Applied Cryptography Intern"
+- id: iog-intern
+  role: "Applied Cryptography Intern"
   org: "Input Output Group"
   location: "Remote"
   dates: "July 2025 - October 2025"

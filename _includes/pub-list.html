@@ -3,12 +3,16 @@
   Pass the list to render as `pubs`, e.g.:
       {% include pub-list.html pubs=site.data.publications %}
   Your own name (profile.me) is automatically bolded.
+
+  Each entry gets an id so it can be linked to directly (#<id>); the featured
+  cards at the top of the page point here.  Entries without an explicit `id`
+  fall back to a slug of their title, so nothing breaks if one is missing.
 {% endcomment %}
 {% assign me = site.data.profile.me %}
 {% capture bolded %}<strong>{{ me }}</strong>{% endcapture %}
 <ol class="pub-list">
   {% for pub in include.pubs %}
-  <li class="pub">
+  <li class="pub" id="{{ pub.id | default: pub.title | slugify }}">
     <div class="pub-title">{{ pub.title }}</div>
     <div class="pub-authors">{{ pub.authors | replace: me, bolded }}</div>
     <div class="pub-meta">

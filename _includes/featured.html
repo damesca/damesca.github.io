@@ -1,0 +1,59 @@
+{% comment %}
+  Section 2b — right column: selected work.
+
+  Single source of truth: the cards are built from the same YAML entries that
+  the full CV below renders, so a paper is never written twice.  To put
+  something up here, add `featured: true` plus a `featured_order` to its entry
+  in _data/publications.yml, _data/publications_national.yml or
+  _data/projects.yml.  Never more than 6 cards, however many are flagged.
+
+  `none` is an empty array used as a fallback: `concat` errors out on nil, and
+  projects.yml is empty until there is something to put in it.
+{% endcomment %}
+
+{% assign none = "" | split: "," %}
+{% assign feat_i = site.data.publications            | default: none | where: "featured", true %}
+{% assign feat_n = site.data.publications_national   | default: none | where: "featured", true %}
+{% assign feat_p = site.data.projects                | default: none | where: "featured", true %}
+{% assign featured = feat_i | concat: feat_n | concat: feat_p | sort: "featured_order" %}
+{% assign featured = featured | slice: 0, 6 %}
+
+{% if featured.size > 0 %}
+<div class="featured">
+  <h2 class="col-heading" id="selected-work">Selected work</h2>
+  <ul class="card-list">
+    {% for item in featured %}
+
+      {% comment %} Publications carry a `venue`, projects carry a `name`. {% endcomment %}
+      {% if item.venue %}{% assign kind = "Paper" %}{% else %}{% assign kind = "Project" %}{% endif %}
+      {% assign kind = item.card_type | default: kind %}
+      {% assign label = item.title | default: item.name %}
+      {% assign anchor = item.id | default: label | slugify %}
+
+      <li class="card">
+        <h3 class="card-title"><a href="#{{ anchor }}">{{ label }}</a></h3>
+        <p class="card-meta">
+          <span class="pill pill-{{ kind | downcase }}">{{ kind }}</span>
+          {% if item.venue %}{{ item.venue }}{% if item.year %} · {{ item.year }}{% endif %}
+          {%- else -%}
+            {% if item.technologies %}{{ item.technologies | join: " · " }}{% endif %}{% if item.year %}{% if item.technologies %} · {% endif %}{{ item.year }}{% endif %}
+          {%- endif %}
+        </p>
+        {% assign blurb = item.card_summary | default: item.description %}
+        {% if blurb %}<p class="card-summary">{{ blurb }}</p>{% endif %}
+        {% if item.links %}
+        <p class="card-links">
+          {% if item.links.pdf %}<a href="{{ item.links.pdf }}" target="_blank" rel="noopener">PDF</a>{% endif %}
+          {% if item.links.eprint %}<a href="{{ item.links.eprint }}" target="_blank" rel="noopener">ePrint</a>{% endif %}
+          {% if item.links.doi %}<a href="{{ item.links.doi }}" target="_blank" rel="noopener">DOI</a>{% endif %}
+          {% if item.links.code %}<a href="{{ item.links.code }}" target="_blank" rel="noopener">Code</a>{% endif %}
+          {% if item.links.repo %}<a href="{{ item.links.repo }}" target="_blank" rel="noopener">Repository</a>{% endif %}
+          {% if item.links.demo %}<a href="{{ item.links.demo }}" target="_blank" rel="noopener">Demo</a>{% endif %}
+        </p>
+        {% endif %}
+      </li>
+
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}

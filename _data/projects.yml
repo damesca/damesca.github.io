@@ -1,0 +1,50 @@
+# ============================================================================
+#  Projects / implementations.  Most recent first.
+#
+#  This file is intentionally EMPTY: while it has no entries, the whole
+#  "Projects" section stays hidden and nothing appears in the featured cards.
+#  Uncomment the block below (or add your own) to switch the section on.
+#
+#  Fields per entry:
+#    id            (required) — unique slug, used as the entry's #anchor.
+#                               Don't change it once published.
+#    name          (required) — project name
+#    description   (required) — a line or two
+#    year          (optional)
+#    technologies  (optional) — list, e.g. [Rust, Python]
+#    links         (optional) — any subset of: repo, demo, paper, docs
+#
+#  --- Featured works (the cards in the top-right column) -------------------
+#    featured        (optional) — true to show it as a card up top
+#    featured_order  (optional) — position among the cards; lower comes first.
+#                                 Numbers are shared with publications.yml and
+#                                 publications_national.yml, so don't reuse one
+#                                 that is already taken there (1-5 are in use).
+#    card_summary    (optional) — one sentence shown on the card
+#
+#  At most 6 cards are ever rendered, no matter how many entries are flagged.
+# ============================================================================
+
+ - id: hqcr-implementation
+   name: "HQC - Rust implementation"
+   description: "A pure-Rust implementation of the PQ code-based KEM candidate of HQC (Hamming Quasi-Cyclic)."
+   year: 2026
+   technologies: [Rust]
+   links:
+     repo: "https://github.com/damesca/hqcr"
+     demo: ""
+   featured: true
+   featured_order: 6
+   card_summary: "A pure-Rust implementation of the PQ code-based KEM candidate of HQC (Hamming Quasi-Cyclic)."
+
+ - id: cavefish-r&d
+   name: "Cavefish Prototype"
+   description: "A Cardano Light Client based on Intents, Blind Signatures and SNARKs. R&D project, SRL 3."
+   year: 2026
+   technologies: [Haskell, Circom]
+   links:
+     repo: "https://github.com/input-output-hk/cavefish"
+     docs: "https://github.com/input-output-hk/cavefish/issues/65"
+   featured: false
+   featured_order: 6
+   card_summary: "A Cardano Light Client based on Intents, Blind Signatures and SNARKs."

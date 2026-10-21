@@ -13,7 +13,7 @@ tagline: "Secure Computation · Zero-Knowledge · Applied Cryptography"
 # Short bio — plain text or inline HTML/markdown is fine on separate lines.
 bio: >
 
-  I am an applied cryptographer researcher and engineer (PhD) working at the
+  I am an applied cryptography researcher and engineer (PhD) working at the
   intersection of theory and real-world systems. My research focuses on building
   secure and efficient protocols, with a strong focus on decentralized scenarios
   - secure multi-party computation, zero-knowledge proofs, post-quantum primitives,
@@ -27,7 +27,9 @@ cv_pdf: "assets/cv.pdf"
 photo: "assets/dani_profile.jpg"
 
 # --- Links --------------------------------------------------------
-# Leave any value blank ("") to hide that link.
+# These drive the icon row in the header. Leave a value blank ("") or keep the
+# line commented out to hide that icon — nothing else to edit. Uncomment `dblp`
+# or `eprint` with your URLs and the icons appear automatically.
 location: "Málaga, Spain"
 email: "damesca.crypto@protonmail.com"
 scholar: "https://scholar.google.com/citations?user=exdZ-7YAAAAJ"
