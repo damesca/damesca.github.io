@@ -36,3 +36,15 @@
    featured: true
    featured_order: 6
    card_summary: "A pure-Rust implementation of the PQ code-based KEM candidate of HQC (Hamming Quasi-Cyclic)."
+
+ - id: cavefish-r&d
+   name: "Cavefish Prototype"
+   description: "A Cardano Light Client based on Intents, Blind Signatures and SNARKs. R&D project, SRL 3."
+   year: 2026
+   technologies: [Haskell, Circom]
+   links:
+     repo: "https://github.com/input-output-hk/cavefish"
+     docs: "https://github.com/input-output-hk/cavefish/issues/65"
+   featured: false
+   featured_order: 6
+   card_summary: "A Cardano Light Client based on Intents, Blind Signatures and SNARKs."

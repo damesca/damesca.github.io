@@ -21,7 +21,7 @@
 - id: eip712-offchain-oracles-2026
   title: "EIP 712-based Off-Chain Oracles: Benefits and Caveats"
   authors: "Daniel Morales, Isaac Agudo"
-  venue: "XIX Reunión Española sobre Criptología y Seguridad de la Información - RECSI 2026"
+  venue: "XIX Reunión Española sobre Criptología y Seguridad de la Información - RECSI"
   year: 2026
   links:
     eprint: "https://cryptull.webs.ull.es/RECSI2026/"
